@@ -1,0 +1,26 @@
+{
+	"i18n": true,
+	"type": "panel",
+	"items": {
+		"port": {
+			"type": "number",
+			"label": "The TCP port on which the service is listening for incoming connections",
+			"newLine": true
+		},
+		"path": {
+			"type": "text",
+			"label": "The path to the serial port to connect to",
+			"newLine": true
+		},
+		"channel": {
+			"type": "number",
+			"label": "The channel number if more than one serial port is connected",
+			"newLine": true
+		},
+		"baudrate": {
+			"type": "number",
+			"label": "The baudrate of the serial port",
+			"newLine": true
+		}
+	}
+}
