@@ -78,10 +78,14 @@
 		]
 	},
 	"native": {
-		"port": "7053",
-		"path": "",
-		"channel": 0,
-		"baudrate": "9600"
+		"serialPorts": [
+			{
+			"path": "COM5",
+			"channel": 0,
+			"baudrate": "9600"
+			}
+		],
+		"port": "7053"
 	},
 	"objects": [],
 	"instanceObjects": [

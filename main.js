@@ -10,6 +10,28 @@ const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
+const dgram = require('dgram');
+const http = require('http');
+
+
+const {SerialPort} = require('serialport');
+const vbus = require('resol-vbus');
+
+//const config = require('./config');
+
+
+
+const {
+	Connection,
+	TcpConnectionEndpoint,
+} = vbus;
+
+const serialformat = /^(COM|com)[0-9][0-9]?$|^\/dev\/tty.*$/;
+const serialPorts = [];
+const connections = [];
+let logging = null;
+
+
 
 class VbusGw extends utils.Adapter {
 
@@ -22,7 +44,7 @@ class VbusGw extends utils.Adapter {
 			name: 'vbus-gw',
 		});
 		this.on('ready', this.onReady.bind(this));
-		this.on('stateChange', this.onStateChange.bind(this));
+		//this.on('stateChange', this.onStateChange.bind(this));
 		// this.on('objectChange', this.onObjectChange.bind(this));
 		// this.on('message', this.onMessage.bind(this));
 		this.on('unload', this.onUnload.bind(this));
@@ -40,15 +62,46 @@ class VbusGw extends utils.Adapter {
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
 		this.log.info('config port: ' + this.config.port);
-		this.log.info('config path: ' + this.config.path);
-		this.log.info('config channel: ' + this.config.channel);
-		this.log.info('config baudrate: ' + this.config.baudrate);
+		this.log.info('config path: ' + this.config.serialPorts[0].path);
+		this.log.info('config channel: ' + this.config.serialPorts[0].channel);
+		this.log.info('config baudrate: ' + this.config.serialPorts[0].baudrate);
 
-		/*
+		if (!this.config.serialPorts[0].path) {
+			this.log.error(`Serial port id is empty - please check instance configuration of ${this.namespace}`);
+			return;
+		} else if (!this.config.serialPorts[0].path.match(serialformat)) {
+			this.log.error(`Serial port id format not valid. Should be e.g. COM5 or /dev/ttyUSBSerial`);
+			return;
+		}
+
+
+		for (const serialPortConfig of this.config.serialPorts) {
+			try {
+				await this.openSerialPort(serialPortConfig);
+				this.setState('info.connection', true, true);
+			}
+			catch (err) {
+				this.errorLog(err);
+				return;
+			}
+		}
+
+		logging = await this.createLogging();
+
+		await this.createTcpEndpoint();
+
+		await this.startDiscoveryServices();
+
+		this.debugLog('Waiting for connections...');
+
+	}
+
+	/*
 		For every state in the system there has to be also an object of type state
 		Here a simple template for a boolean variable named "testVariable"
 		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
 		*/
+	/*
 		await this.setObjectNotExistsAsync('testVariable', {
 			type: 'state',
 			common: {
@@ -60,53 +113,217 @@ class VbusGw extends utils.Adapter {
 			},
 			native: {},
 		});
+		*/
+	// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
+	// this.subscribeStates('testVariable');
+	// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
+	// this.subscribeStates('lights.*');
+	// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
+	// this.subscribeStates('*');
 
-		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-		this.subscribeStates('testVariable');
-		// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
-		// this.subscribeStates('lights.*');
-		// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
-		// this.subscribeStates('*');
-
-		/*
+	/*
 			setState examples
 			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
 		*/
-		// the variable testVariable is set to true as command (ack=false)
-		await this.setStateAsync('testVariable', true);
+	// the variable testVariable is set to true as command (ack=false)
+	//await this.setStateAsync('testVariable', true);
 
-		// same thing, but the value is flagged "ack"
-		// ack should be always set to true if the value is received from or acknowledged from the target system
-		await this.setStateAsync('testVariable', { val: true, ack: true });
+	// same thing, but the value is flagged "ack"
+	// ack should be always set to true if the value is received from or acknowledged from the target system
+	//await this.setStateAsync('testVariable', { val: true, ack: true });
 
-		// same thing, but the state is deleted after 30s (getState will return null afterwards)
-		await this.setStateAsync('testVariable', { val: true, ack: true, expire: 30 });
+	// same thing, but the state is deleted after 30s (getState will return null afterwards)
+	//await this.setStateAsync('testVariable', { val: true, ack: true, expire: 30 });
 
-		// examples for the checkPassword/checkGroup functions
+	// examples for the checkPassword/checkGroup functions
+	/*
 		let result = await this.checkPasswordAsync('admin', 'iobroker');
 		this.log.info('check user admin pw iobroker: ' + result);
 
 		result = await this.checkGroupAsync('admin', 'admin');
 		this.log.info('check group user admin group admin: ' + result);
+		*/
+
+	errorLog(...args) {
+		console.log(...args);
 	}
 
-	/**
-	 * Is called when adapter shuts down - callback has to be called under any circumstances!
-	 * @param {() => void} callback
-	 */
-	onUnload(callback) {
-		try {
-			// Here you must clear all timeouts or intervals that may still be active
-			// clearTimeout(timeout1);
-			// clearTimeout(timeout2);
-			// ...
-			// clearInterval(interval1);
 
-			callback();
-		} catch (e) {
-			callback();
+	debugLog(...args) {
+		console.log(...args);
+	}
+
+
+	acceptConnection(port, origin) {
+		this.debugLog('Accepting connection');
+
+		connections.push(origin);
+
+		function remove() {
+			const idx = connections.indexOf(origin);
+			if (idx >= 0) {
+				connections.splice(idx, 1);
+			}
 		}
+
+		origin.on('error', err => {
+			this.errorLog(err);
+
+			remove();
+		});
+
+		origin.on('end', () => {
+			this.debugLog('Closing connection');
+
+			remove();
+		});
+
+		origin.on('readable', () => {
+			let chunk;
+			while ((chunk = origin.read())) {
+				port.write(chunk);
+			}
+		});
 	}
+
+	async createTcpEndpoint() {
+		this.debugLog('Opening TCP endpoint...');
+
+		const channels = this.config.serialPorts.reduce((memo, serialPort) => {
+			// @ts-ignore
+			memo [serialPort.channel] = `VBus ${serialPort.channel}: ${serialPort.path}`;
+			return memo;
+		}, []);
+
+		console.log(channels);
+
+		const endpoint = new TcpConnectionEndpoint({
+			port: this.config.port,
+			channels,
+		});
+
+		endpoint.on('connection', connectionInfo => {
+			const channel = +(connectionInfo.channel || '0');
+			const serialPort = serialPorts.find(port => port.channel === channel);
+
+			if (serialPort) {
+				this.debugLog(`Negotiated connection for channel ${channel}...`);
+				this.acceptConnection(serialPort.port, connectionInfo.socket);
+			} else {
+				this.debugLog(`Rejecting connection for unknown channel ${channel}...`);
+				connectionInfo.socket.end();
+			}
+		});
+
+		await endpoint.start();
+	}
+
+
+	async openSerialPort(config) {
+		this.debugLog('Opening serial port...');
+
+		const port = await new Promise((resolve, reject) => {
+			const port = new SerialPort({
+				path: config.path,
+				baudRate: config.baudrate,
+			}, (err) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(port);
+				}
+			});
+		});
+
+		port.on('error', err => {
+			this.errorLog(err);
+			//process.exit(1);
+		});
+
+		port.on('end', () => {
+			this.debugLog('Serial port EOF');
+			//process.exit(0);
+		});
+
+		port.on('readable', () => {
+			let chunk;
+			while ((chunk = port.read())) {
+				for (const connection of connections) {
+					connection.write(chunk);
+				}
+
+				if (logging) {
+					logging.write(chunk);
+				}
+			}
+		});
+
+		serialPorts.push({
+			channel: config.channel,
+			port,
+		});
+	}
+
+
+	async createLogging() {
+		const connection = new Connection();
+
+		connection.on('packet', _packet => {
+			// console.log(_packet.getId());
+		});
+
+		return connection;
+	}
+
+
+	async startDiscoveryServices() {
+		this.debugLog('Starting discovery web service...');
+
+		const webReplyContent = [
+			'vendor = "RESOL"',
+			'product = "DL2"',
+			'serial = "001E66000000"',
+			'version = "2.1.0"',
+			'build = "201311280853"',
+			'name = "DL2-001E66000000"',
+			'features = "vbus,dl2"',
+		].join('\n');
+
+		const webServer = http.createServer((req, res) => {
+			res.writeHead(200, { 'Content-Type': 'text/plain' });
+			res.end(webReplyContent);
+		});
+
+		webServer.on('clientError', (err, socket) => {
+			this.debugLog(err);
+			socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+		});
+
+		webServer.listen(3000);
+
+		this.debugLog('Starting discovery broadcast service...');
+
+		const queryString = '---RESOL-BROADCAST-QUERY---';
+		const replyBuffer = Buffer.from('---RESOL-BROADCAST-REPLY---', 'utf-8');
+
+		const discoveryServer = dgram.createSocket('udp4');
+
+		discoveryServer.on('error', err => {
+			this.debugLog('error', err);
+		});
+
+		discoveryServer.on('message', (msg, remote) => {
+			// console.log('message', msg, remote);
+
+			const msgString = msg.toString('utf-8');
+			if (msgString === queryString) {
+				discoveryServer.send(replyBuffer, remote.port, remote.address);
+			}
+		});
+
+		discoveryServer.bind(7053);
+	}
+
 
 	// If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
 	// You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
@@ -130,6 +347,7 @@ class VbusGw extends utils.Adapter {
 	 * @param {string} id
 	 * @param {ioBroker.State | null | undefined} state
 	 */
+	/*
 	onStateChange(id, state) {
 		if (state) {
 			// The state was changed
@@ -139,6 +357,7 @@ class VbusGw extends utils.Adapter {
 			this.log.info(`state ${id} deleted`);
 		}
 	}
+	*/
 
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
 	// /**
@@ -158,8 +377,27 @@ class VbusGw extends utils.Adapter {
 	// 	}
 	// }
 
-}
 
+
+	/**
+ * Is called when adapter shuts down - callback has to be called under any circumstances!
+ * @param {() => void} callback
+ */
+	onUnload(callback) {
+		try {
+		// Here you must clear all timeouts or intervals that may still be active
+		// clearTimeout(timeout1);
+		// clearTimeout(timeout2);
+		// ...
+		// clearInterval(interval1);
+
+			callback();
+		} catch (e) {
+			callback();
+		}
+	}
+
+}
 if (require.main !== module) {
 	// Export the constructor in compact mode
 	/**
