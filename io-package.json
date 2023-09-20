@@ -80,9 +80,9 @@
 	"native": {
 		"serialPorts": [
 			{
-			"path": "COM5",
+			"path": "",
 			"channel": 0,
-			"baudrate": "9600"
+			"baudrate": 9600
 			}
 		],
 		"port": "7053"
