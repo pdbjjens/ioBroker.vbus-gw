@@ -81,7 +81,7 @@ class VbusGw extends utils.Adapter {
 				this.setState('info.connection', true, true);
 			}
 			catch (err) {
-				this.errorLog(err);
+				this.log.error(err);
 				return;
 			}
 		}
@@ -92,7 +92,7 @@ class VbusGw extends utils.Adapter {
 
 		await this.startDiscoveryServices();
 
-		this.debugLog('Waiting for connections...');
+		this.log.info('Waiting for connections...');
 
 	}
 
@@ -144,18 +144,18 @@ class VbusGw extends utils.Adapter {
 		this.log.info('check group user admin group admin: ' + result);
 		*/
 
-	errorLog(...args) {
-		console.log(...args);
-	}
+	//errorLog(args) {
+	//	this.log.error(args);
+	//}
 
 
-	debugLog(...args) {
-		console.log(...args);
-	}
+	//debugLog(args) {
+	//	this.log.debug(args);
+	//}
 
 
 	acceptConnection(port, origin) {
-		this.debugLog('Accepting connection');
+		this.log.info('Accepting connection');
 
 		connections.push(origin);
 
@@ -167,13 +167,13 @@ class VbusGw extends utils.Adapter {
 		}
 
 		origin.on('error', err => {
-			this.errorLog(err);
+			this.log.error(err);
 
 			remove();
 		});
 
 		origin.on('end', () => {
-			this.debugLog('Closing connection');
+			this.log.info('Closing connection');
 
 			remove();
 		});
@@ -187,7 +187,7 @@ class VbusGw extends utils.Adapter {
 	}
 
 	async createTcpEndpoint() {
-		this.debugLog('Opening TCP endpoint...');
+		this.log.info('Opening TCP endpoint...');
 
 		const channels = this.config.serialPorts.reduce((memo, serialPort) => {
 			// @ts-ignore
@@ -195,7 +195,7 @@ class VbusGw extends utils.Adapter {
 			return memo;
 		}, []);
 
-		console.log(channels);
+		this.log.info ('Channels: ' + JSON.stringify(channels));
 
 		const endpoint = new TcpConnectionEndpoint({
 			port: this.config.port,
@@ -207,10 +207,10 @@ class VbusGw extends utils.Adapter {
 			const serialPort = serialPorts.find(port => port.channel === channel);
 
 			if (serialPort) {
-				this.debugLog(`Negotiated connection for channel ${channel}...`);
+				this.log.info(`Negotiated connection for channel ${channel}...`);
 				this.acceptConnection(serialPort.port, connectionInfo.socket);
 			} else {
-				this.debugLog(`Rejecting connection for unknown channel ${channel}...`);
+				this.log.info(`Rejecting connection for unknown channel ${channel}...`);
 				connectionInfo.socket.end();
 			}
 		});
@@ -220,7 +220,7 @@ class VbusGw extends utils.Adapter {
 
 
 	async openSerialPort(config) {
-		this.debugLog('Opening serial port...');
+		this.log.info('Opening serial port...');
 
 		const port = await new Promise((resolve, reject) => {
 			const port = new SerialPort({
@@ -236,12 +236,12 @@ class VbusGw extends utils.Adapter {
 		});
 
 		port.on('error', err => {
-			this.errorLog(err);
+			this.log.error(err);
 			//process.exit(1);
 		});
 
 		port.on('end', () => {
-			this.debugLog('Serial port EOF');
+			this.log.info('Serial port EOF');
 			//process.exit(0);
 		});
 
@@ -269,7 +269,7 @@ class VbusGw extends utils.Adapter {
 		const connection = new Connection();
 
 		connection.on('packet', _packet => {
-			// console.log(_packet.getId());
+			// this.log.debug (_packet.getId());
 		});
 
 		return connection;
@@ -277,7 +277,7 @@ class VbusGw extends utils.Adapter {
 
 
 	async startDiscoveryServices() {
-		this.debugLog('Starting discovery web service...');
+		this.log.info('Starting discovery web service...');
 
 		const webReplyContent = [
 			'vendor = "RESOL"',
@@ -295,13 +295,13 @@ class VbusGw extends utils.Adapter {
 		});
 
 		webServer.on('clientError', (err, socket) => {
-			this.debugLog(err);
+			this.log.error(err.message);
 			socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 		});
 
 		webServer.listen(3000);
 
-		this.debugLog('Starting discovery broadcast service...');
+		this.log.info('Starting discovery broadcast service...');
 
 		const queryString = '---RESOL-BROADCAST-QUERY---';
 		const replyBuffer = Buffer.from('---RESOL-BROADCAST-REPLY---', 'utf-8');
@@ -309,11 +309,11 @@ class VbusGw extends utils.Adapter {
 		const discoveryServer = dgram.createSocket('udp4');
 
 		discoveryServer.on('error', err => {
-			this.debugLog('error', err);
+			this.log.error(err.message);
 		});
 
 		discoveryServer.on('message', (msg, remote) => {
-			// console.log('message', msg, remote);
+			this.log.debug('message' + msg + ' ' + remote);
 
 			const msgString = msg.toString('utf-8');
 			if (msgString === queryString) {
