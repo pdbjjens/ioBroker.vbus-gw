@@ -1,7 +1,7 @@
 {
-	"vbus-gw adapter settings": "Ajustes del adaptador para vbus-gw",
-	"port": "The TCP port on which the service is listening for incoming connections",
-	"path": "The path to the serial port to connect to",
-	"channel": "The channel number if more than one serial port is connected",
-	"baudrate": "The baudrate of the serial port"
+    "vbus-gw adapter settings": "Ajustes del adaptador para vbus-gw",
+    "port": "The TCP port on which the service is listening for incoming connections",
+    "path": "The path to the serial port to connect to",
+    "channel": "The channel number if more than one serial port is connected",
+    "baudrate": "The baudrate of the serial port"
 }
