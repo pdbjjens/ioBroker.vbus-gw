@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vbus-gw",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "news": {
+      "0.0.3": {
+        "en": "Fix: Disable SENTRY",
+        "de": "Fix: SENTRY deaktivieren",
+        "ru": "Исправление: Отключить SENTRY",
+        "pt": "Fix: Desativar o SENTRY",
+        "nl": "Disable SENTRY",
+        "fr": "Correction : SENTRY invalidité",
+        "it": "Risolvere: Disabilitare la SENTRY",
+        "es": "Corrección: Disable SENTRY",
+        "pl": "Fix: Disable SENTRY (ang.)",
+        "uk": "Виправлення: Вимкнена СЕНТРІЯ",
+        "zh-cn": "Ix:倾覆南联盟"
+      },
       "0.0.2": {
         "en": "initial release",
         "de": "Erstfreigabe",
