@@ -1,142 +1,143 @@
 {
-  "common": {
-    "name": "vbus-gw",
-    "version": "0.0.3",
-    "news": {
-      "0.0.3": {
-        "en": "Fix: Disable SENTRY",
-        "de": "Fix: SENTRY deaktivieren",
-        "ru": "Исправление: Отключить SENTRY",
-        "pt": "Fix: Desativar o SENTRY",
-        "nl": "Disable SENTRY",
-        "fr": "Correction : SENTRY invalidité",
-        "it": "Risolvere: Disabilitare la SENTRY",
-        "es": "Corrección: Disable SENTRY",
-        "pl": "Fix: Disable SENTRY (ang.)",
-        "uk": "Виправлення: Вимкнена СЕНТРІЯ",
-        "zh-cn": "Ix:倾覆南联盟"
-      },
-      "0.0.2": {
-        "en": "initial release",
-        "de": "Erstfreigabe",
-        "ru": "начальный выпуск",
-        "pt": "lançamento inicial",
-        "nl": "niet",
-        "fr": "initial release",
-        "it": "rilascio iniziale",
-        "es": "liberación inicial",
-        "pl": "pierwsze wydanie",
-        "uk": "початковий реліз",
-        "zh-cn": "初步释放"
-      },
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "zh-cn": "首次出版",
-        "uk": "початковий випуск"
-      }
+    "common": {
+        "name": "vbus-gw",
+        "version": "0.0.3",
+        "news": {
+            "0.0.3": {
+                "en": "Fix: Disable SENTRY",
+                "de": "Fix: SENTRY deaktivieren",
+                "ru": "Исправление: Отключить SENTRY",
+                "pt": "Fix: Desativar o SENTRY",
+                "nl": "Disable SENTRY",
+                "fr": "Correction : SENTRY invalidité",
+                "it": "Risolvere: Disabilitare la SENTRY",
+                "es": "Corrección: Disable SENTRY",
+                "pl": "Fix: Disable SENTRY (ang.)",
+                "uk": "Виправлення: Вимкнена СЕНТРІЯ",
+                "zh-cn": "Ix:倾覆南联盟"
+            },
+            "0.0.2": {
+                "en": "initial release",
+                "de": "Erstfreigabe",
+                "ru": "начальный выпуск",
+                "pt": "lançamento inicial",
+                "nl": "niet",
+                "fr": "initial release",
+                "it": "rilascio iniziale",
+                "es": "liberación inicial",
+                "pl": "pierwsze wydanie",
+                "uk": "початковий реліз",
+                "zh-cn": "初步释放"
+            },
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版",
+                "uk": "початковий випуск"
+            }
+        },
+        "titleLang": {
+            "en": "RESOL VBus Gateway",
+            "de": "RESOL VBus-Gateway",
+            "ru": "Шлюз RESOL VBus",
+            "pt": "Gateway RESOL VBus",
+            "nl": "RESOL VBus-gateway",
+            "fr": "Passerelle RESOL VBus",
+            "it": "RESOL VBus Gateway",
+            "es": "Pasarela RESOL VBus",
+            "pl": "Bramka RESOL VBus",
+            "uk": "Шлюз RESOL VBus",
+            "zh-cn": "RESOL V总线网关"
+        },
+        "desc": {
+            "en": "Allows TCP access to serial port based VBus devices",
+            "de": "Ermöglicht TCP-Zugriff auf serielle Port-basierte VBus-Geräte",
+            "ru": "Разрешает TCP-доступ к устройствам VBus на базе последовательного порта.",
+            "pt": "Permite acesso TCP a dispositivos VBus baseados em porta serial",
+            "nl": "Maakt TCP-toegang mogelijk tot op seriële poort gebaseerde VBus-apparaten",
+            "fr": "Permet l'accès TCP aux périphériques VBus basés sur le port série",
+            "it": "Consente l'accesso TCP ai dispositivi VBus basati su porta seriale",
+            "es": "Permite el acceso TCP a dispositivos VBus basados ​​en puerto serie",
+            "pl": "Umożliwia dostęp TCP do urządzeń VBus opartych na porcie szeregowym",
+            "uk": "Дозволяє TCP-доступ до пристроїв VBus на основі послідовного порту",
+            "zh-cn": "允许 TCP 访问基于串行端口的 VBus 设备"
+        },
+        "authors": [
+            "Jens-Peter Jensen <jjensen@t-online.de>"
+        ],
+        "keywords": [
+            "RESOL",
+            "VBus",
+            "serial-to-tcp",
+            "gateway"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "vbus-gw.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/pdbjjens/ioBroker.vbus-gw/main/admin/vbus-gw.png",
+        "readme": "https://github.com/pdbjjens/ioBroker.vbus-gw/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "network",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "push",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.13"
+            }
+        ]
     },
-    "titleLang": {
-      "en": "RESOL VBus Gateway",
-      "de": "RESOL VBus-Gateway",
-      "ru": "Шлюз RESOL VBus",
-      "pt": "Gateway RESOL VBus",
-      "nl": "RESOL VBus-gateway",
-      "fr": "Passerelle RESOL VBus",
-      "it": "RESOL VBus Gateway",
-      "es": "Pasarela RESOL VBus",
-      "pl": "Bramka RESOL VBus",
-      "uk": "Шлюз RESOL VBus",
-      "zh-cn": "RESOL V总线网关"
+    "native": {
+        "serialPorts": [
+            {
+                "path": "",
+                "channel": 0,
+                "baudrate": 9600
+            }
+        ],
+        "port": "7053",
+        "discoveryPort": 80
     },
-    "desc": {
-      "en": "Allows TCP access to serial port based VBus devices",
-      "de": "Ermöglicht TCP-Zugriff auf serielle Port-basierte VBus-Geräte",
-      "ru": "Разрешает TCP-доступ к устройствам VBus на базе последовательного порта.",
-      "pt": "Permite acesso TCP a dispositivos VBus baseados em porta serial",
-      "nl": "Maakt TCP-toegang mogelijk tot op seriële poort gebaseerde VBus-apparaten",
-      "fr": "Permet l'accès TCP aux périphériques VBus basés sur le port série",
-      "it": "Consente l'accesso TCP ai dispositivi VBus basati su porta seriale",
-      "es": "Permite el acceso TCP a dispositivos VBus basados ​​en puerto serie",
-      "pl": "Umożliwia dostęp TCP do urządzeń VBus opartych na porcie szeregowym",
-      "uk": "Дозволяє TCP-доступ до пристроїв VBus на основі послідовного порту",
-      "zh-cn": "允许 TCP 访问基于串行端口的 VBus 设备"
-    },
-    "authors": [
-      "Jens-Peter Jensen <jjensen@t-online.de>"
-    ],
-    "keywords": [
-      "RESOL",
-      "VBus",
-      "serial-to-tcp",
-      "gateway"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "main": "main.js",
-    "icon": "vbus-gw.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/pdbjjens/ioBroker.vbus-gw/main/admin/vbus-gw.png",
-    "readme": "https://github.com/pdbjjens/ioBroker.vbus-gw/blob/main/README.md",
-    "loglevel": "info",
-    "mode": "daemon",
-    "type": "network",
-    "compact": true,
-    "connectionType": "local",
-    "dataSource": "push",
-    "adminUI": {
-      "config": "json"
-    },
-    "dependencies": [
-      {
-        "js-controller": ">=3.3.22"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=5.1.13"
-      }
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
     ]
-  },
-  "native": {
-    "serialPorts": [
-      {
-        "path": "",
-        "channel": 0,
-        "baudrate": 9600
-      }
-    ],
-    "port": "7053"
-  },
-  "objects": [],
-  "instanceObjects": [
-    {
-      "_id": "info",
-      "type": "channel",
-      "common": {
-        "name": "Information"
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.connection",
-      "type": "state",
-      "common": {
-        "role": "indicator.connected",
-        "name": "Device or service connected",
-        "type": "boolean",
-        "read": true,
-        "write": false,
-        "def": false
-      },
-      "native": {}
-    }
-  ]
 }

@@ -3,5 +3,6 @@
     "port": "The TCP port on which the service is listening for incoming connections",
     "path": "The path to the serial port to connect to",
     "channel": "The channel number if more than one serial port is connected",
-    "baudrate": "The baudrate of the serial port"
+    "baudrate": "The baudrate of the serial port",
+    "discoveryPort": "服务侦听发现请求的 http 端口"
 }

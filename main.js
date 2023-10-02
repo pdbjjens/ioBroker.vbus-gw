@@ -61,10 +61,11 @@ class VbusGw extends utils.Adapter {
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info('config port: ' + this.config.port);
-		this.log.info('config path: ' + this.config.serialPorts[0].path);
-		this.log.info('config channel: ' + this.config.serialPorts[0].channel);
-		this.log.info('config baudrate: ' + this.config.serialPorts[0].baudrate);
+		this.log.info('listen port: ' + this.config.port);
+		this.log.info('discovery port: ' + this.config.discoveryPort);
+		this.log.info('serial port path: ' + this.config.serialPorts[0].path);
+		this.log.info('serial port channel: ' + this.config.serialPorts[0].channel);
+		this.log.info('serial port baudrate: ' + this.config.serialPorts[0].baudrate);
 
 		if (!this.config.serialPorts[0].path) {
 			this.log.error(`Serial port id is empty - please check instance configuration of ${this.namespace}`);
@@ -299,7 +300,7 @@ class VbusGw extends utils.Adapter {
 			socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 		});
 
-		webServer.listen(3000);
+		webServer.listen(this.config.discoveryPort);
 
 		this.log.info('Starting discovery broadcast service...');
 

@@ -55,6 +55,11 @@ If you only want to connect to a single serial port it is recommended to configu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+**WORK IN PROGRESS**
+
+- (pdbjjens) New: Selectable discovery port
+
 ### 0.0.3 (2023-09-21)
 
 - (pdbjjens) Fix: Disable SENTRY
