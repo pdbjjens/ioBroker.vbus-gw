@@ -60,8 +60,7 @@ If you only want to connect to a single serial port it is recommended to configu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.0.4 (2023-10-03)
 
 - (pdbjjens) New: Selectable discovery port
 - (pdbjjens) New: Check for default password
