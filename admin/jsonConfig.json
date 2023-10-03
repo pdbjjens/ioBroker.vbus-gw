@@ -30,7 +30,7 @@
 			"size": 3
 		},
 
-		"serialPorts": {
+		"serialPortsTab": {
 			"type": "table",
 			"newLine": true,
 			"label": "",
@@ -41,9 +41,9 @@
 			"items": [
 				{
 				"type": "text",
+				"attr": "path",		
 				"title": "The path to the serial port to connect to",
-				"width": "8% ",
-				"attr": "path"		
+				"width": "8% "
 				},
 				{
 				"type": "number",

@@ -106,10 +106,20 @@
         ]
     },
     "native": {
-        "serialPorts": [
+        "serialPortsTab": [
             {
                 "path": "",
                 "channel": 0,
+                "baudrate": 9600
+            },
+            {
+                "path": "",
+                "channel": 1,
+                "baudrate": 9600
+            },
+            {
+                "path": "",
+                "channel": 2,
                 "baudrate": 9600
             }
         ],

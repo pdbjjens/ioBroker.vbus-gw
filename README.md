@@ -37,6 +37,8 @@ Configurable items are:
 
 - The TCP port on which the service is listening for incoming connections.  
 Default is port: 7053, which should not be changed.
+- The http port on which the service is listening for discovery requests.  
+Default is port: 80, alternatively port 3000 can be selected.
 - A list of serial ports to connect to with the following parameters for each serial port:  
 
 - channel: The vbus channel to which the serial port is assigned.  
@@ -46,7 +48,10 @@ If you only want to connect to a single serial port it is recommended to configu
 
 ## Known issues
 
-- This adapter currently supports only one serial port.  
+- This adapter currently supports up to 3 serial ports.
+- Sending the PASS command returns +OK instead of an error regardless of whether the password submitted is correct or not
+- VBus.net connected devices are not emulated. Sending the CONNECT (via tag) command returns +OK although no connction is established.
+- Only connection requests with the default password "vbus" are accepted.  
 - Selecting a non-existing channel using the CHANNEL command returns +OK instead of an error.  
 - Sending the DATA command with a non-existing channel selected returns +OK, but immediately closes the connection afterwards.
 
@@ -59,6 +64,8 @@ If you only want to connect to a single serial port it is recommended to configu
 **WORK IN PROGRESS**
 
 - (pdbjjens) New: Selectable discovery port
+- (pdbjjens) New: Check for default password
+- (pdbjjens) New: support for up to 3 serial ports
 
 ### 0.0.3 (2023-09-21)
 
