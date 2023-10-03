@@ -207,11 +207,18 @@ class VbusGw extends utils.Adapter {
 			const channel = +(connectionInfo.channel || '0');
 			const serialPort = serialPorts.find(port => port.channel === channel);
 
-			if (serialPort) {
-				this.log.info(`Negotiated connection for channel ${channel}...`);
-				this.acceptConnection(serialPort.port, connectionInfo.socket);
+			if (connectionInfo.password && connectionInfo.password === 'vbus') {
+				this.log.info(`Accepting connection from ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} with password ${connectionInfo.password} ...`);
+
+				if (serialPort) {
+					this.log.info(`Negotiated connection for channel ${channel}...`);
+					this.acceptConnection(serialPort.port, connectionInfo.socket);
+				} else {
+					this.log.info(`Rejecting connection for unknown channel ${channel}...`);
+					connectionInfo.socket.end();
+				}
 			} else {
-				this.log.info(`Rejecting connection for unknown channel ${channel}...`);
+				this.log.info(`Rejecting connection for wrong password ${connectionInfo.password}...`);
 				connectionInfo.socket.end();
 			}
 		});
