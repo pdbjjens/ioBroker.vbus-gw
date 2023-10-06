@@ -10,13 +10,27 @@
 			"lg": 12,
 			"newLine": true
 		},
+		"discoveryPort": {
+			"type": "select",
+			"label": "The http port on which the service is listening for discovery requests",
+			"options": [
+				{"label": "Port 80", "value": 80},
+				{"label": "Port 3000", "value": 3000}
+			],
+			"default": 80,
+			"sm": 12,
+			"md": 12,
+			"lg": 12,
+			"newLine": true
+		},
+
 		"serialPortsHdr": {
 			"type": "header",
 			"text": "Table of Serial Ports",
 			"size": 3
 		},
 
-		"serialPorts": {
+		"serialPortsTab": {
 			"type": "table",
 			"newLine": true,
 			"label": "",
@@ -27,9 +41,9 @@
 			"items": [
 				{
 				"type": "text",
+				"attr": "path",		
 				"title": "The path to the serial port to connect to",
-				"width": "8% ",
-				"attr": "path"		
+				"width": "8% "
 				},
 				{
 				"type": "number",
