@@ -28,6 +28,7 @@ const {
 
 const serialformat = /^(COM|com)[0-9][0-9]?$|^\/dev\/tty.*$/;
 const serialPorts = [];
+const serialPortsTab =[];
 const connections = [];
 let logging = null;
 
@@ -61,21 +62,37 @@ class VbusGw extends utils.Adapter {
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info('config port: ' + this.config.port);
-		this.log.info('config path: ' + this.config.serialPorts[0].path);
-		this.log.info('config channel: ' + this.config.serialPorts[0].channel);
-		this.log.info('config baudrate: ' + this.config.serialPorts[0].baudrate);
+		this.log.info('listen port: ' + this.config.port);
+		this.log.info('discovery port: ' + this.config.discoveryPort);
+		//this.log.debug(JSON.stringify(this.config.serialPortsTab));
 
-		if (!this.config.serialPorts[0].path) {
+		for (const i in this.config.serialPortsTab) {
+			if (this.config.serialPortsTab[i].path) {
+				serialPortsTab.push(this.config.serialPortsTab[i]);
+			}
+		}
+		//this.log.debug(JSON.stringify(serialPortsTab));
+
+		if (serialPortsTab.length === 0) {
 			this.log.error(`Serial port id is empty - please check instance configuration of ${this.namespace}`);
-			return;
-		} else if (!this.config.serialPorts[0].path.match(serialformat)) {
-			this.log.error(`Serial port id format not valid. Should be e.g. COM5 or /dev/ttyUSBSerial`);
 			return;
 		}
 
+		for (const ports of serialPortsTab) {
+			this.log.info('serial port path: ' + ports.path);
+			this.log.info('serial port channel: ' + ports.channel);
+			this.log.info('serial port baudrate: ' + ports.baudrate);
 
-		for (const serialPortConfig of this.config.serialPorts) {
+			if (!ports.path) {
+				this.log.error(`Serial port id is empty - please check instance configuration of ${this.namespace}`);
+				return;
+			} else if (!ports.path.match(serialformat)) {
+				this.log.error(`Serial port id format not valid. Should be e.g. COM5 or /dev/ttyUSBSerial`);
+				return;
+			}
+		}
+
+		for (const serialPortConfig of serialPortsTab) {
 			try {
 				await this.openSerialPort(serialPortConfig);
 				this.setState('info.connection', true, true);
@@ -155,7 +172,7 @@ class VbusGw extends utils.Adapter {
 
 
 	acceptConnection(port, origin) {
-		this.log.info('Accepting connection');
+		this.log.info(`Accepting connection to ${origin.remoteAddress.replace(/^.*:/, '')}`);
 
 		connections.push(origin);
 
@@ -173,7 +190,7 @@ class VbusGw extends utils.Adapter {
 		});
 
 		origin.on('end', () => {
-			this.log.info('Closing connection');
+			this.log.info(`Closing connection to ${origin.remoteAddress.replace(/^.*:/, '')}`);
 
 			remove();
 		});
@@ -189,7 +206,7 @@ class VbusGw extends utils.Adapter {
 	async createTcpEndpoint() {
 		this.log.info('Opening TCP endpoint...');
 
-		const channels = this.config.serialPorts.reduce((memo, serialPort) => {
+		const channels = serialPortsTab.reduce((memo, serialPort) => {
 			// @ts-ignore
 			memo [serialPort.channel] = `VBus ${serialPort.channel}: ${serialPort.path}`;
 			return memo;
@@ -206,11 +223,18 @@ class VbusGw extends utils.Adapter {
 			const channel = +(connectionInfo.channel || '0');
 			const serialPort = serialPorts.find(port => port.channel === channel);
 
-			if (serialPort) {
-				this.log.info(`Negotiated connection for channel ${channel}...`);
-				this.acceptConnection(serialPort.port, connectionInfo.socket);
+			if (connectionInfo.password && connectionInfo.password === 'vbus') {
+				this.log.info(`Connection request from ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} with password ${connectionInfo.password} ...`);
+
+				if (serialPort) {
+					this.log.info(`Negotiated connection for channel ${channel}...`);
+					this.acceptConnection(serialPort.port, connectionInfo.socket);
+				} else {
+					this.log.info(`Rejecting connection for unknown channel ${channel}...`);
+					connectionInfo.socket.end();
+				}
 			} else {
-				this.log.info(`Rejecting connection for unknown channel ${channel}...`);
+				this.log.info(`Rejecting connection for wrong password ${connectionInfo.password}...`);
 				connectionInfo.socket.end();
 			}
 		});
@@ -299,7 +323,7 @@ class VbusGw extends utils.Adapter {
 			socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 		});
 
-		webServer.listen(3000);
+		webServer.listen(this.config.discoveryPort);
 
 		this.log.info('Starting discovery broadcast service...');
 
