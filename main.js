@@ -172,7 +172,7 @@ class VbusGw extends utils.Adapter {
 
 
 	acceptConnection(port, origin) {
-		this.log.info('Accepting connection');
+		this.log.info(`Accepting connection to ${origin.remoteAddress.replace(/^.*:/, '')}`);
 
 		connections.push(origin);
 
@@ -190,7 +190,7 @@ class VbusGw extends utils.Adapter {
 		});
 
 		origin.on('end', () => {
-			this.log.info('Closing connection');
+			this.log.info(`Closing connection to ${origin.remoteAddress.replace(/^.*:/, '')}`);
 
 			remove();
 		});
@@ -224,7 +224,7 @@ class VbusGw extends utils.Adapter {
 			const serialPort = serialPorts.find(port => port.channel === channel);
 
 			if (connectionInfo.password && connectionInfo.password === 'vbus') {
-				this.log.info(`Accepting connection from ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} with password ${connectionInfo.password} ...`);
+				this.log.info(`Connection request from ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} with password ${connectionInfo.password} ...`);
 
 				if (serialPort) {
 					this.log.info(`Negotiated connection for channel ${channel}...`);
