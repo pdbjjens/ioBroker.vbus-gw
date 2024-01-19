@@ -60,6 +60,13 @@ If you only want to connect to a single serial port it is recommended to configu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+- (pdbjjens) New: Use resol-vbus v0.28.0
+- (pdbjjens) New: Configurable password for the vbus device (default is "vbus")
+- (pdbjjens) Fix: Channel forwarding to the requesting connections only
+
 ### 0.0.4 (2023-10-03)
 
 - (pdbjjens) New: Selectable discovery port

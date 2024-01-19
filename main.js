@@ -64,17 +64,16 @@ class VbusGw extends utils.Adapter {
 		// this.config:
 		this.log.info('listen port: ' + this.config.port);
 		this.log.info('discovery port: ' + this.config.discoveryPort);
-		//this.log.debug(JSON.stringify(this.config.serialPortsTab));
 
 		for (const i in this.config.serialPortsTab) {
 			if (this.config.serialPortsTab[i].path) {
 				serialPortsTab.push(this.config.serialPortsTab[i]);
 			}
 		}
-		//this.log.debug(JSON.stringify(serialPortsTab));
+		this.log.debug(`serialPortsTab: ${JSON.stringify(serialPortsTab)}`);
 
 		if (serialPortsTab.length === 0) {
-			this.log.error(`Serial port id is empty - please check instance configuration of ${this.namespace}`);
+			this.log.error(`No serial port configured - please check instance configuration of ${this.namespace}`);
 			return;
 		}
 
@@ -82,6 +81,7 @@ class VbusGw extends utils.Adapter {
 			this.log.info('serial port path: ' + ports.path);
 			this.log.info('serial port channel: ' + ports.channel);
 			this.log.info('serial port baudrate: ' + ports.baudrate);
+			this.log.info('vbus password: ' + ports.vbusPassword);
 
 			if (!ports.path) {
 				this.log.error(`Serial port id is empty - please check instance configuration of ${this.namespace}`);
@@ -91,23 +91,25 @@ class VbusGw extends utils.Adapter {
 				return;
 			}
 		}
+		this.main().then(null, err => {
+			this.log.error(err);
+			this.setState('info.connection', false, true);
 
+			//process.exit(1);
+		});
+	}
+
+	async main() {
 		for (const serialPortConfig of serialPortsTab) {
-			try {
-				await this.openSerialPort(serialPortConfig);
-				this.setState('info.connection', true, true);
-			}
-			catch (err) {
-				this.log.error(err);
-				return;
-			}
+			await this.openSerialPort(serialPortConfig);
 		}
-
 		logging = await this.createLogging();
 
 		await this.createTcpEndpoint();
 
 		await this.startDiscoveryServices();
+
+		this.setState('info.connection', true, true);
 
 		this.log.info('Waiting for connections...');
 
@@ -171,10 +173,14 @@ class VbusGw extends utils.Adapter {
 	//}
 
 
-	acceptConnection(port, origin) {
-		this.log.info(`Accepting connection to ${origin.remoteAddress.replace(/^.*:/, '')}`);
+	acceptConnection(serPort, connInfo) {
+		const origin = connInfo.socket;
+		this.log.info(`Accepting connection with ${origin.remoteAddress.replace(/^.*:/, '')}`);
 
-		connections.push(origin);
+		connections.push({
+			channel: serPort.channel,
+			socket: origin,
+		});
 
 		function remove() {
 			const idx = connections.indexOf(origin);
@@ -198,7 +204,8 @@ class VbusGw extends utils.Adapter {
 		origin.on('readable', () => {
 			let chunk;
 			while ((chunk = origin.read())) {
-				port.write(chunk);
+				if (serPort.channel === connInfo.channel)
+					serPort.port.write(chunk);
 			}
 		});
 	}
@@ -206,9 +213,9 @@ class VbusGw extends utils.Adapter {
 	async createTcpEndpoint() {
 		this.log.info('Opening TCP endpoint...');
 
-		const channels = serialPortsTab.reduce((memo, serialPort) => {
+		const channels = serialPorts.reduce((memo, serialPort) => {
 			// @ts-ignore
-			memo [serialPort.channel] = `VBus ${serialPort.channel}: ${serialPort.path}`;
+			memo [serialPort.channel] = `VBus ${serialPort.channel}: ${serialPort.port.path}`;
 			return memo;
 		}, []);
 
@@ -216,6 +223,7 @@ class VbusGw extends utils.Adapter {
 
 		const endpoint = new TcpConnectionEndpoint({
 			port: this.config.port,
+			password: 'vbus',
 			channels,
 		});
 
@@ -223,20 +231,21 @@ class VbusGw extends utils.Adapter {
 			const channel = +(connectionInfo.channel || '0');
 			const serialPort = serialPorts.find(port => port.channel === channel);
 
-			if (connectionInfo.password && connectionInfo.password === 'vbus') {
-				this.log.info(`Connection request from ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} with password ${connectionInfo.password} ...`);
+			//if (connectionInfo.password && connectionInfo.password === 'vbus') {
+			this.log.info(`Connection request from ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} with password ${connectionInfo.password} ...`);
 
-				if (serialPort) {
-					this.log.info(`Negotiated connection for channel ${channel}...`);
-					this.acceptConnection(serialPort.port, connectionInfo.socket);
-				} else {
-					this.log.info(`Rejecting connection for unknown channel ${channel}...`);
-					connectionInfo.socket.end();
-				}
+			if (serialPort) {
+				this.log.info(`Negotiated connection for channel ${channel}...`);
+				this.log.debug(`Select serial port ${JSON.stringify(serialPort.port.path)}...`);
+				this.acceptConnection(serialPort, connectionInfo);
 			} else {
-				this.log.info(`Rejecting connection for wrong password ${connectionInfo.password}...`);
+				this.log.info(`Rejecting connection for unknown channel ${channel}...`);
 				connectionInfo.socket.end();
 			}
+			//} else {
+			//	this.log.info(`Rejecting connection for wrong password ${connectionInfo.password}...`);
+			//	connectionInfo.socket.end();
+			//}
 		});
 
 		await endpoint.start();
@@ -244,7 +253,7 @@ class VbusGw extends utils.Adapter {
 
 
 	async openSerialPort(config) {
-		this.log.info('Opening serial port...');
+		this.log.info(`Opening serial port ${config.path}...`);
 
 		const port = await new Promise((resolve, reject) => {
 			const port = new SerialPort({
@@ -273,7 +282,7 @@ class VbusGw extends utils.Adapter {
 			let chunk;
 			while ((chunk = port.read())) {
 				for (const connection of connections) {
-					connection.write(chunk);
+					if (connection.channel === config.channel) connection.socket.write(chunk);
 				}
 
 				if (logging) {
@@ -293,7 +302,7 @@ class VbusGw extends utils.Adapter {
 		const connection = new Connection();
 
 		connection.on('packet', _packet => {
-			// this.log.debug (_packet.getId());
+			//this.log.debug (_packet.getId());
 		});
 
 		return connection;
