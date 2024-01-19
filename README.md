@@ -48,11 +48,9 @@ If you only want to connect to a single serial port it is recommended to configu
 
 ## Known issues
 
-- This adapter currently supports up to 3 serial ports.
-- Sending the PASS command returns +OK instead of an error regardless of whether the password submitted is correct or not
-- VBus.net connected devices are not emulated. Sending the CONNECT (via tag) command returns +OK although no connction is established.
-- Only connection requests with the default password "vbus" are accepted.  
-- Selecting a non-existing channel using the CHANNEL command returns +OK instead of an error.  
+- This adapter currently supports up to 3 VBus'es connected to serial ports.
+- VBus.net connected devices are not emulated. Sending the CONNECT (via tag) command returns +OK although no connection is established.  
+- The passwords for all VBus'es connected to the serial ports must be the same (default is "vbus").  
 - Sending the DATA command with a non-existing channel selected returns +OK, but immediately closes the connection afterwards.
 
 ## Changelog
@@ -64,7 +62,7 @@ If you only want to connect to a single serial port it is recommended to configu
 ### **WORK IN PROGRESS**
 
 - (pdbjjens) New: Use resol-vbus v0.28.0
-- (pdbjjens) New: Configurable password for the vbus device (default is "vbus")
+- (pdbjjens) New: Configurable password for each vbus (default is "vbus")
 - (pdbjjens) Fix: Channel forwarding to the requesting connections only
 
 ### 0.0.4 (2023-10-03)

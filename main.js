@@ -223,7 +223,7 @@ class VbusGw extends utils.Adapter {
 
 		const endpoint = new TcpConnectionEndpoint({
 			port: this.config.port,
-			password: 'vbus',
+			password: this.config.serialPortsTab[0].vbusPassword,
 			channels,
 		});
 
@@ -232,14 +232,14 @@ class VbusGw extends utils.Adapter {
 			const serialPort = serialPorts.find(port => port.channel === channel);
 
 			//if (connectionInfo.password && connectionInfo.password === 'vbus') {
-			this.log.info(`Connection request from ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} with password ${connectionInfo.password} ...`);
+			this.log.debug(`Connection request from ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} with password ${connectionInfo.password} ...`);
 
 			if (serialPort) {
-				this.log.info(`Negotiated connection for channel ${channel}...`);
+				this.log.info(`Negotiated connection with ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} for channel ${channel}...`);
 				this.log.debug(`Select serial port ${JSON.stringify(serialPort.port.path)}...`);
 				this.acceptConnection(serialPort, connectionInfo);
 			} else {
-				this.log.info(`Rejecting connection for unknown channel ${channel}...`);
+				this.log.info(`Rejecting connection with ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} for unknown channel ${channel}...`);
 				connectionInfo.socket.end();
 			}
 			//} else {
@@ -346,7 +346,7 @@ class VbusGw extends utils.Adapter {
 		});
 
 		discoveryServer.on('message', (msg, remote) => {
-			this.log.debug('message' + msg + ' ' + remote);
+			this.log.debug('message' + msg + ' from ' + remote.address);
 
 			const msgString = msg.toString('utf-8');
 			if (msgString === queryString) {
