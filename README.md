@@ -39,6 +39,8 @@ Configurable items are:
 Default is port: 7053, which should not be changed.
 - The http port on which the service is listening for discovery requests.  
 Default is port: 80, alternatively port 3000 can be selected.
+- The password of the VBus gateway.  
+Allows access to all serial port connected VBus devices. Default is "vbus".  
 - A list of serial ports to connect to with the following parameters for each serial port:  
 
 - channel: The vbus channel to which the serial port is assigned.  
@@ -48,9 +50,9 @@ If you only want to connect to a single serial port it is recommended to configu
 
 ## Known issues
 
-- This adapter currently supports up to 3 VBus'es connected to serial ports.
+- This adapter currently supports up to 3 VBus devices connected via serial ports.
+- The passwords for all VBus'es connected to the serial ports are the same.  
 - VBus.net connected devices are not emulated. Sending the CONNECT (via tag) command returns +OK although no connection is established.  
-- The passwords for all VBus'es connected to the serial ports must be the same (default is "vbus").  
 - Sending the DATA command with a non-existing channel selected returns +OK, but immediately closes the connection afterwards.
 
 ## Changelog
@@ -62,7 +64,7 @@ If you only want to connect to a single serial port it is recommended to configu
 ### **WORK IN PROGRESS**
 
 - (pdbjjens) New: Use resol-vbus v0.28.0
-- (pdbjjens) New: Configurable password for each vbus (default is "vbus")
+- (pdbjjens) New: Configurable password for the VBus gateway
 - (pdbjjens) Fix: Channel forwarding to the requesting connections only
 
 ### 0.0.4 (2023-10-03)
@@ -82,7 +84,7 @@ If you only want to connect to a single serial port it is recommended to configu
 ## License
 
 MIT License  
-Copyright (c) 2023 Jens-Peter Jensen <jjensen@t-online.de>  
+Copyright (c) 2024 Jens-Peter Jensen <jjensen@t-online.de>  
 Copyright (c) 2013-present, Daniel Wippermann.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

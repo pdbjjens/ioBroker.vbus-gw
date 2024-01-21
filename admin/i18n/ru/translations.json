@@ -4,5 +4,6 @@
     "path": "The path to the serial port to connect to",
     "channel": "The channel number if more than one serial port is connected",
     "baudrate": "The baudrate of the serial port",
-    "discoveryPort": "HTTP-порт, на котором служба прослушивает запросы на обнаружение."
+    "discoveryPort": "HTTP-порт, на котором служба прослушивает запросы на обнаружение.",
+    "vbusPassword": "Пароль шлюза vbus"
 }

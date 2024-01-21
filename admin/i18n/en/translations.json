@@ -5,5 +5,5 @@
 	"path": "The path to the serial port to connect to",
 	"channel": "The channel number if more than one serial port is connected",
 	"baudrate": "The baudrate of the serial port",
-	"vbusPassword": "The password of the vbus"
+	"vbusPassword": "The password of the vbus gateway"
 }

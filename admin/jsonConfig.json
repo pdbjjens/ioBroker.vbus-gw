@@ -23,6 +23,16 @@
 			"lg": 12,
 			"newLine": true
 		},
+		"vbusPassword": {
+			"type": "password",
+			"repeat": false,
+			"visible": true,
+			"label": "The password of the vbus gateway",
+			"sm": 12,
+			"md": 12,
+			"lg": 12,
+			"newLine": true
+		},
 
 		"serialPortsHdr": {
 			"type": "header",
@@ -56,16 +66,7 @@
 				"attr": "baudrate",
 				"title": "The baudrate of the serial port",
 				"width": "8% "
-				},
-				{
-				"type": "password",
-				"attr": "vbusPassword",
-				"repeat": false,
-				"visible": true,
-				"title": "The password of the vbus",
-				"width": "8% "
 				}
-	
 			]
 		}
 	}
