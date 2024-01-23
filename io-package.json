@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vbus-gw",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "news": {
+      "0.0.6": {
+        "en": "New: Use resol-vbus v0.29.0\nNew: Logging of denied connection events",
+        "de": "Neu: Verwendung von resol-vbus v0.29.0\nNeu: Protokollierung von verwehrten Verbindungsereignissen",
+        "ru": "Новый: Используйте resol-vbus v0.29.0\nНовый: Логирование отрицаемых событий связи",
+        "pt": "Novo: Use resol-vbus v0.29.0\nNovo: Registo de eventos de conexão negados",
+        "nl": "Nieuw: Gebruik resol-vbus v0.29.0\nNieuw: Loggen van geweigerde verbindingsgebeurtenissen",
+        "fr": "Nouveau : utiliser resol-vbus v0.29.0\nNouveau: Enregistrement d'événements de connexion refusés",
+        "it": "Nuovo: Utilizzare risol-vbus v0.29.0\nNuovo: Logging di eventi di connessione negati",
+        "es": "Nuevo: Use resol-vbus v0.29.0\nNew: Logging of denied connection events",
+        "pl": "Nowy: Użyj desol- vbus v0.29.0\nNowy: Logowanie odmówionych zdarzeń połączeń",
+        "uk": "Новий: Використовуйте resol-vbus v0.29.0\nНовий: Відхилення відхилених подій з'єднання",
+        "zh-cn": "新建: 使用resol- vbus v0. 290\n新建: 无法登录连接事件"
+      },
       "0.0.5": {
         "en": "New: Use resol-vbus v0.28.0\nNew: Configurable password for the VBus gateway\nFix: Channel forwarding to the requesting connections only",
         "de": "Neu: Nutzung von resol-vbus v0.28.0\nNeu: Konfigurierbares Passwort für das VBus Gateway\nFix: Kanalweiterleitung nur an die anfragenden Verbindungen",
