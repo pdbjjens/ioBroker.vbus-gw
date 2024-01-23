@@ -27,6 +27,7 @@
 			"type": "password",
 			"repeat": false,
 			"visible": true,
+			"default": "vbus",
 			"label": "The password of the vbus gateway",
 			"sm": 12,
 			"md": 12,

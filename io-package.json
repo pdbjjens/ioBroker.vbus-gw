@@ -170,7 +170,7 @@
     ],
     "port": "7053",
     "discoveryPort": 80,
-    "vbusPassword": "vbus"
+    "vbusPassword": ""
   },
   "objects": [],
   "instanceObjects": [
