@@ -60,6 +60,11 @@ If you only want to connect to a single serial port it is recommended to configu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+**WORK IN PROGRESS**
+
+- (pdbjjens) New: Use resol-vbus v0.29.0
+- (pdbjjens) New: Logging of denied connection events
+
 ### 0.0.5 (2024-01-21)
 
 - (pdbjjens) New: Use resol-vbus v0.28.0
