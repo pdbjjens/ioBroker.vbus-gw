@@ -112,6 +112,8 @@ class VbusGw extends utils.Adapter {
 
 	acceptConnection(serPort, connInfo) {
 		const origin = connInfo.socket;
+		//this.log.debug(`connInfo.channel: ${connInfo.channel}`);
+		const channel = +(connInfo.channel || '0');
 		this.log.info(`Accepted connection with ${origin.remoteAddress.replace(/^.*:/, '')}`);
 
 		connections.push({
@@ -141,8 +143,8 @@ class VbusGw extends utils.Adapter {
 		origin.on('readable', () => {
 			let chunk;
 			while ((chunk = origin.read())) {
-				if (serPort.channel === connInfo.channel)
-					serPort.port.write(chunk);
+				//this.log.debug(`received Chunk for connInfo ${channel} and serPort ${serPort.channel}`);
+				if (serPort.channel === channel) serPort.port.write(chunk);
 			}
 		});
 	}
@@ -165,6 +167,7 @@ class VbusGw extends utils.Adapter {
 		});
 
 		endpoint.on('connection', connectionInfo => {
+			//this.log.debug(`connectionInfo.channel: ${connectionInfo.channel}`);
 			const channel = +(connectionInfo.channel || '0');
 			const serialPort = serialPorts.find(port => port.channel === channel);
 
