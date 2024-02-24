@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vbus-gw",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "news": {
+      "0.0.7": {
+        "en": "Fix: VBus write fixed\nFix: Password logging removed",
+        "de": "Fix: VBus-Schreiben gefixed\nFix: Passwort-Logging entfernt",
+        "ru": "Fix: VBus пишет фиксированный\nFix: удалена регистрация паролей",
+        "pt": "Fix: VBus escrever fixo\nCorrigir: Registro de senha removido",
+        "nl": "Fix: VBus schrijf vast\nFix: Wachtwoord logging verwijderd",
+        "fr": "Correction: VBus écrire corrigé\nCorrection : suppression de l'enregistrement du mot de passe",
+        "it": "Fisso: VBus scrivere fisso\nFisso: Registrazione password rimosso",
+        "es": "Corrección: VBus escribe fijo\nCorrección: Se retira el registro de contraseña",
+        "pl": "Fix: VBus pisać stałe\nFix: Hasło logowanie usunięte",
+        "uk": "Виправлення: VBus запис фіксований\nВиправлення: Видалення пароля",
+        "zh-cn": "修正: VBus 写入固定\n修正: 密码记录已删除"
+      },
       "0.0.6": {
         "en": "New: Use resol-vbus v0.29.0\nNew: Logging of denied connection events",
         "de": "Neu: Verwendung von resol-vbus v0.29.0\nNeu: Protokollierung von verwehrten Verbindungsereignissen",

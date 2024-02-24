@@ -59,7 +59,7 @@ If you only want to connect to a single serial port it is recommended to configu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.0.7 (2024-02-24)
 
 - (pdbjjens) Fix: VBus write fixed
 - (pdbjjens) Fix: Password logging removed
@@ -84,10 +84,6 @@ If you only want to connect to a single serial port it is recommended to configu
 ### 0.0.3 (2023-09-21)
 
 - (pdbjjens) Fix: Disable SENTRY
-
-### 0.0.2 (2023-09-21)
-
-- (pdbjjens) initial release
 
 ## License
 
