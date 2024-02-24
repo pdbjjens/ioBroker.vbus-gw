@@ -63,6 +63,7 @@ If you only want to connect to a single serial port it is recommended to configu
 ### **WORK IN PROGRESS**
 
 - (pdbjjens) Fix: VBus write fixed
+- (pdbjjens) Fix: Password logging removed
 
 ### 0.0.6 (2024-01-23)
 

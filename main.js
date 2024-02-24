@@ -60,7 +60,6 @@ class VbusGw extends utils.Adapter {
 		// this.config:
 		this.log.info('Listen port: ' + this.config.port);
 		this.log.info('Discovery port: ' + this.config.discoveryPort);
-		this.log.info('VBus password: ' + this.config.vbusPassword);
 
 		for (const i in this.config.serialPortsTab) {
 			if (this.config.serialPortsTab[i].path) {
@@ -168,7 +167,7 @@ class VbusGw extends utils.Adapter {
 			const channel = +(connectionInfo.channel || '0');
 			const serialPort = serialPorts.find(port => port.channel === channel);
 
-			this.log.debug(`Connection request from ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} with password ${connectionInfo.password} ...`);
+			this.log.debug(`Connection request from ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')}...`);
 
 			if (serialPort) {
 				this.log.info(`Negotiated connection with ${connectionInfo.socket.remoteAddress.replace(/^.*:/, '')} for channel ${channel}...`);
