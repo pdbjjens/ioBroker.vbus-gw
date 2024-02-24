@@ -3,13 +3,12 @@
 ![Logo](admin/vbus-gw.png)
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.vbus-gw.svg)](https://www.npmjs.com/package/iobroker.vbus-gw)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.vbus-gw.svg)](https://www.npmjs.com/package/iobroker.vbus-gw)
-![Number of Installations](https://iobroker.live/badges/vbus-gw-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/vbus-gw-stable.svg)
+![Number of Installations](https://iobroker.live/badges/vbus-gw-installed.svg)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.vbus-gw.svg)](https://www.npmjs.com/package/iobroker.vbus-gw)
+**Tests:** ![Test and Release](https://github.com/pdbjjens/ioBroker.vbus-gw/workflows/Test%20and%20Release/badge.svg)
 
 [![NPM](https://nodei.co/npm/iobroker.vbus-gw.png?downloads=true)](https://nodei.co/npm/iobroker.vbus-gw/)
-
-**Tests:** ![Test and Release](https://github.com/pdbjjens/ioBroker.vbus-gw/workflows/Test%20and%20Release/badge.svg)
 
 ## vbus-gw adapter for ioBroker
 
