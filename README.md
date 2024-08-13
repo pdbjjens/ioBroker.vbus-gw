@@ -59,6 +59,12 @@ If you only want to connect to a single serial port it is recommended to configu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS** - 2024H2 maintenance release
+
+- (pdbjjens) Change: node>=18, js-contoller>=5 and admin>=6 required
+- (pdbjjens) New: Updated dependencies
+- (pdbjjens) New: Ensure that vbus-gw is started before myvbus or resol
+
 ### 0.0.7 (2024-02-24)
 
 - (pdbjjens) Fix: VBus write fixed

@@ -9,6 +9,7 @@
   "homepage": "https://github.com/pdbjjens/ioBroker.vbus-gw",
   "license": "MIT",
   "keywords": [
+    "ioBroker",
     "RESOL",
     "VBus",
     "serial-to-tcp",
