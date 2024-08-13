@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vbus-gw",
-    "version": "0.0.7",
+    "version": "0.1.0",
     "news": {
+      "0.1.0": {
+        "en": "Change: node>=18, js-contoller>=5 and admin>=6 required\nNew: Updated dependencies\nNew: Ensure that vbus-gw is started before myvbus or resol",
+        "de": "Änderung: node>=18, js-contoller>=5 und admin>=6 erforderlich\nNeu: Aktualisierte Abhängigkeiten\nNeu: Sicherstellen, dass vbus-gw vor myvbus oder resol gestartet wird",
+        "ru": "Изменение: node>=18, js-contoller>=5 и admin>=6 требуется\nНовые: Обновленные зависимости\nNew: Ensure that vbus-gw is started before myvbus or resol",
+        "pt": "Alteração: node>=18, js-contoller>=5 e admin>=6 requerido\nNovo: Dependências atualizadas\nNovo: Certifique-se de que vbus-gw é iniciado antes de myvbus ou resol",
+        "nl": "Verandering: node>=18, js-contoller>=5 en admin>=6 vereist\nNieuw: Bijgewerkte afhankelijkheden\nNieuw: Zorg ervoor dat vbus-gw wordt gestart voor myvbus of resol",
+        "fr": "Changement: noeud>=18, js-contoller>=5 et admin>=6 requis\nNouveau: Dépendances actualisées\nNouveau: Assurez-vous que vbus-gw est commencé avant myvbus ou résol",
+        "it": "Modifica: nodo>=18, js-contoller>=5 e admin>=6 richiesto\nNuovo: dipendenze aggiornate\nNuovo: Assicurarsi che vbus-gw è iniziato prima myvbus o risol",
+        "es": "Cambio: node confianza=18, js-contoller=5 y administración=6 requerido\nNuevas: dependencias actualizadas\nNuevo: Asegúrese de que vbus-gw se inicie antes de mivbus o resol",
+        "pl": "Zmiana: węzeł > = 18, js- contoller > = 5 i admin > = 6 wymagane\nNowy: Aktualizacja zależności\nNowy: Upewnij się, że vbus- gw zostanie uruchomiony przed myvbus lub resol",
+        "uk": "Зміна: вершина>=18, js-contoller>=5 і admin>=6\nНовий: Оновлені залежності\nНовий: Забезпечити, що vbus-gw почався до мівбусу або розсолу",
+        "zh-cn": "更改:节点18、js-contoller%5和管理员6\n新建:更新的依赖关系\n新建: 确保 vbus- gw 在 myvbus 或 resol 之前开始"
+      },
       "0.0.7": {
         "en": "Fix: VBus write fixed\nFix: Password logging removed",
         "de": "Fix: VBus-Schreiben gefixed\nFix: Passwort-Logging entfernt",
