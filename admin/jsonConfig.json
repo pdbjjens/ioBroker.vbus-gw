@@ -5,9 +5,11 @@
 		"port": {
 			"type": "number",
 			"label": "The TCP port on which the service is listening for incoming connections",
+			"xs": 12,
 			"sm": 12,
-			"md": 12,
-			"lg": 12,
+			"md": 6,
+			"lg": 4,
+			"xl": 4,
 			"newLine": true
 		},
 		"discoveryPort": {
@@ -18,9 +20,11 @@
 				{"label": "Port 3000", "value": 3000}
 			],
 			"default": 80,
+			"xs": 12,
 			"sm": 12,
-			"md": 12,
-			"lg": 12,
+			"md": 6,
+			"lg": 4,
+			"xl": 4,
 			"newLine": true
 		},
 		"vbusPassword": {
@@ -29,9 +33,11 @@
 			"visible": true,
 			"default": "vbus",
 			"label": "The password of the vbus gateway",
+			"xs": 12,
 			"sm": 12,
-			"md": 12,
-			"lg": 12,
+			"md": 6,
+			"lg": 4,
+			"xl": 4,
 			"newLine": true
 		},
 
@@ -45,9 +51,11 @@
 			"type": "table",
 			"newLine": true,
 			"label": "",
+			"xs": 12,
 			"sm": 12,
 			"md": 12,
 			"lg": 12,
+			"xl": 12,
 			"noDelete": true,
 			"items": [
 				{

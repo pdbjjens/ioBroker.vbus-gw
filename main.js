@@ -22,7 +22,7 @@ const {
 	TcpConnectionEndpoint,
 } = vbus;
 
-const serialformat = /^(COM|com)[0-9][0-9]?$|^\/dev\/tty.*$/;
+const serialformat = /^(COM|com)[0-9][0-9]?$|^\/dev\/tty.*$|^\/dev\/serial\/by-id\/usb-.*$|^\/dev\/serial\/by-path\/platform-.*$/i;
 const serialPorts = [];
 const serialPortsTab =[];
 const connections = [];
