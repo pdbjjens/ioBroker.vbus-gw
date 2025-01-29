@@ -1,9 +1,9 @@
 {
-    "vbus-gw adapter settings": "vbus-gw的适配器设置",
-    "port": "The TCP port on which the service is listening for incoming connections",
-    "path": "The path to the serial port to connect to",
-    "channel": "The channel number if more than one serial port is connected",
-    "baudrate": "The baudrate of the serial port",
-    "discoveryPort": "服务侦听发现请求的 http 端口",
-    "vbusPassword": "vbus网关的密码"
+    "The TCP port on which the service is listening for incoming connections": "该服务正在侦听传入连接的TCP端口",
+    "The http port on which the service is listening for discovery requests": "服务正在侦听发现请求的HTTP端口",
+    "The password of the vbus gateway": "VBU Gateway的密码，默认：VBU",
+    "Table of Serial Ports": "串行端口表",
+    "The path to the serial port to connect to": "通往串行端口的路径，例如COM5或 /DEV /TTYUSB0",
+    "The channel number if more than one serial port is connected": "频道号如果连接了多个串行端口",
+    "The baudrate of the serial port": "串行端口的福音"
 }

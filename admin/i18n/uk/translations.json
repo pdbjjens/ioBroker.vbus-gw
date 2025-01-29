@@ -1,9 +1,9 @@
 {
-    "vbus-gw adapter settings": "Параметри адаптера для vbus-gw",
-    "port": "Порт TCP, на якому служба прослуховує вхідні з’єднання",
-    "path": "Шлях до послідовного порту для підключення",
-    "channel": "Номер каналу, якщо підключено більше ніж один послідовний порт",
-    "baudrate": "Швидкість передачі послідовного порту",
-    "discoveryPort": "Порт http, на якому служба прослуховує запити на виявлення",
-    "vbusPassword": "Пароль шлюзу vbus"
+    "The TCP port on which the service is listening for incoming connections": "Порт TCP, на якому послуга слухає вхідні з'єднання",
+    "The http port on which the service is listening for discovery requests": "HTTP -порт, на якому послуга слухає запити на відкриття",
+    "The password of the vbus gateway": "Пароль шлюзу VBUS, за замовчуванням: VBUS",
+    "Table of Serial Ports": "Таблиця послідовних портів для моніторингу",
+    "The path to the serial port to connect to": "Шлях до послідовного порту, наприклад Com5 або /dev /ttyusb0",
+    "The channel number if more than one serial port is connected": "Номер каналу, якщо підключено більше одного послідовного порту",
+    "The baudrate of the serial port": "Бодрат серійного порту"
 }

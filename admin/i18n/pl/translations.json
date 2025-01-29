@@ -1,9 +1,9 @@
 {
-    "vbus-gw adapter settings": "Ustawienia adaptera dla vbus-gw",
-    "port": "The TCP port on which the service is listening for incoming connections",
-    "path": "The path to the serial port to connect to",
-    "channel": "The channel number if more than one serial port is connected",
-    "baudrate": "The baudrate of the serial port",
-    "discoveryPort": "Port http, na którym usługa nasłuchuje żądań wykrywania",
-    "vbusPassword": "Hasło bramy vbus"
+    "The TCP port on which the service is listening for incoming connections": "Port TCP, na którym usługa słucha przychodzących połączeń",
+    "The http port on which the service is listening for discovery requests": "Port HTTP, w którym usługa słucha żądań odkrycia",
+    "The password of the vbus gateway": "Hasło bramy VBUS, domyślnie: VBUS",
+    "Table of Serial Ports": "Tabela portów szeregowych do monitorowania",
+    "The path to the serial port to connect to": "Ścieżka do portu szeregowego, np. Com5 lub /dev /ttyusb0",
+    "The channel number if more than one serial port is connected": "Numer kanału Jeśli podłączony jest więcej niż jeden port szeregowy",
+    "The baudrate of the serial port": "Baudrate of the Serial Port"
 }
