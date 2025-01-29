@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vbus-gw",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "news": {
+      "0.2.0": {
+        "en": "Change: Migration to ESLint 9\nNew: Accept serial port paths /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxx or /dev/serial/by-path/platform-xxxxxxxxxxxxxxxxxxx\nChange: Responsive Design optimizations",
+        "de": "Veränderung: Migration auf ESLint 9\nNeu: Akzeptieren von seriellen Portpfaden wie /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxxx oder /dev/serial/by-path/platform-xxxxxxxxxxxxxxxxxxx\nÄnderung: Responsive Design Optimierungen",
+        "ru": "Изменение: Миграция в ESLint 9\nНовый: Примите серийные портовые пути /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxxxxxxxx или /dev/serial/by-path/platform-xxxxxxxxxxxxxxxxx\nИзменение: ответственная оптимизация дизайна",
+        "pt": "Mudança: Migração para ESLint 9\nNovo: Aceitar caminhos de porta serial /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxx ou /dev/serial/por-path/platform-xxxxxxxxxxxxxxxx\nMudança: Otimizações de design responsivo",
+        "nl": "Wijziging: migratie naar ESLint 9\nNieuw: Accepteer seriële poortpaden /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxx of /dev/serial/by-path/platform-xxxxxxxxxxxxxxxxxx\nVerandering: Responsive Design optimalisaties",
+        "fr": "Changement: Migration vers ESLint 9\nNouveau: Accepter les chemins de port série /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxx ou /dev/serial/by-path/platform-xxxxxxxxxxxxxx\nChangement : Optimisations de conception réactive",
+        "it": "Cambiamento: migrazione a ESLint 9\nNovità: Accetta i percorsi della porta seriale /dev/serial/by-id/usb-xxxxxxxxxx o /dev/serial/by-path/platform-xxxxxxxxxxxxxxxx\nCambiamento: Ottimizzazioni di Design Responsive",
+        "es": "Cambio: Migración a ESLint 9\nNuevo: Aceptar las rutas portuarias serie /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nCambio: Optimizaciones de diseño responsable",
+        "pl": "Zmiana: migracja do ESLint 9\nNowy: Akceptuj ścieżki portu szeregowego / dev / serial / by- id / usb- xxxxxxxxxxxxxxxxxxx lub / dev / serial / by- path / platform- xxxxxxxxxxxxxxxxxxxxx\nZmiana: Optymalizacja Responsive Design",
+        "uk": "Зміна: Міграція до ESLint 9\nОстанні фотографії / HD XXX / безкоштовно порно фільми / hdxxx.top\nЗміна: Оптимізація адаптивного дизайну",
+        "zh-cn": "变化:向ESLint 9迁移\n新建:接受串行端口路径 /dev/serial/by-id/usb-xxxxxxxxxxxx或/dev/serial/by-path/platform-xxxxxxxxxxxxxxxxxxxxx\n更改:响应设计优化"
+      },
       "0.1.0": {
         "en": "Change: node>=18, js-contoller>=5 and admin>=6 required\nNew: Updated dependencies\nNew: Ensure that vbus-gw is started before myvbus or resol",
         "de": "Änderung: node>=18, js-contoller>=5 und admin>=6 erforderlich\nNeu: Aktualisierte Abhängigkeiten\nNeu: Sicherstellen, dass vbus-gw vor myvbus oder resol gestartet wird",
@@ -80,19 +93,6 @@
         "pl": "Fix: Disable SENTRY (ang.)",
         "uk": "Виправлення: Вимкнена СЕНТРІЯ",
         "zh-cn": "Ix:倾覆南联盟"
-      },
-      "0.0.2": {
-        "en": "initial release",
-        "de": "Erstfreigabe",
-        "ru": "начальный выпуск",
-        "pt": "lançamento inicial",
-        "nl": "niet",
-        "fr": "initial release",
-        "it": "rilascio iniziale",
-        "es": "liberación inicial",
-        "pl": "pierwsze wydanie",
-        "uk": "початковий реліз",
-        "zh-cn": "初步释放"
       }
     },
     "titleLang": {

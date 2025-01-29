@@ -63,7 +63,7 @@ If you only want to connect to a single serial port it is recommended to configu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS** - 2025H1 maintenance release
+### 0.2.0 (2025-01-29) - 2025H1 maintenance release
 
 - (pdbjjens) Change: Migration to ESLint 9
 - (pdbjjens) New: Accept serial port paths /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxx or /dev/serial/by-path/platform-xxxxxxxxxxxxxxxxxxx
@@ -90,12 +90,6 @@ If you only want to connect to a single serial port it is recommended to configu
 - (pdbjjens) New: Use resol-vbus v0.28.0
 - (pdbjjens) New: Configurable password for the VBus gateway
 - (pdbjjens) Fix: Channel forwarding to the requesting connections only
-
-### 0.0.4 (2023-10-03)
-
-- (pdbjjens) New: Selectable discovery port
-- (pdbjjens) New: Check for default password
-- (pdbjjens) New: support for up to 3 serial ports
 
 ## License
 

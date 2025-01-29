@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vbus-gw",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Allows TCP access to serial port based VBus devices",
   "author": {
     "name": "Jens-Peter Jensen",
