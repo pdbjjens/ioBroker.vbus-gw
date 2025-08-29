@@ -1,4 +1,10 @@
 # Older changes
+## 0.0.5 (2024-01-21)
+
+- (pdbjjens) New: Use resol-vbus v0.28.0
+- (pdbjjens) New: Configurable password for the VBus gateway
+- (pdbjjens) Fix: Channel forwarding to the requesting connections only
+
 ## 0.0.4 (2023-10-03)
 
 - (pdbjjens) New: Selectable discovery port

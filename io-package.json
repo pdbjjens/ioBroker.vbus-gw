@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vbus-gw",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "news": {
+      "0.3.0": {
+        "en": "Change: node>=20, js-controller>=7.0.7 and admin>=7.6.17 required\nChange: Cleanup devDependencies",
+        "de": "Änderung: node>=20, js-controller>=7.0.7 und admin>=7.6.17 erforderlich\nÄnderung: Cleanup devDependencies",
+        "ru": "Изменение: node>=20, js-контроллер>=7.0.7 и admin>=7.6.17 требуется\nОбновление: Cleanup devDependencies",
+        "pt": "Alteração: nó>=20, js-controlador>=7.07 e admin>=7.6.17 necessários\nAlteração: Limpeza devDependências",
+        "nl": "Verandering: node>=20, js-controller>=7.7 en admin>=7.617 vereist\nVerandering: Opruimen van devDependencies",
+        "fr": "Changement : noeud>=20, js-controller>=7.0.7 et admin>=7.6.17 requis\nChangement: Dépendances de nettoyage",
+        "it": "Modifica: nodo>=20, js-controller>=7.0.7 e admin>=7.6.17 richiesto\nCambiamento: Cleanup devDependencies",
+        "es": "Cambio: node confianza=20, js-controller confianza=7.0.7 y administración=7.6.17 requerido\nCambio: DevDependencies de limpieza",
+        "pl": "Zmiana: węzeł > = 20, kontroler js- > = 7.0.7 i admin > = 7.6.17 wymagane\nZmiana: Oczyszczenie devDevendences",
+        "uk": "Зміна: вершина>=20, js-controller>=7.0.7 і admin>=7.6.17 потрібно\nЗміна: Прибиральники",
+        "zh-cn": "变化:节点20、js控制器7.0.7和管理员7.6.17\n变化: 清理依赖性"
+      },
       "0.2.0": {
         "en": "Change: Migration to ESLint 9\nNew: Accept serial port paths /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxx or /dev/serial/by-path/platform-xxxxxxxxxxxxxxxxxxx\nChange: Responsive Design optimizations",
         "de": "Veränderung: Migration auf ESLint 9\nNeu: Akzeptieren von seriellen Portpfaden wie /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxxx oder /dev/serial/by-path/platform-xxxxxxxxxxxxxxxxxxx\nÄnderung: Responsive Design Optimierungen",
@@ -80,19 +93,6 @@
         "pl": "Nowy: Wybrane odkrycie portowe\nNew: Check for default passwordword\nNowy: wsparcie dla 3 portów seryjnych",
         "uk": "Новий: Вибір порту відкриття\nНовий: Перевірте пароль за замовчуванням\nНовий: підтримка до 3 серійних портів",
         "zh-cn": "新的:可收回的港口\n新:违约前言\n新的:支持最多3个边境港口"
-      },
-      "0.0.3": {
-        "en": "Fix: Disable SENTRY",
-        "de": "Fix: SENTRY deaktivieren",
-        "ru": "Исправление: Отключить SENTRY",
-        "pt": "Fix: Desativar o SENTRY",
-        "nl": "Disable SENTRY",
-        "fr": "Correction : SENTRY invalidité",
-        "it": "Risolvere: Disabilitare la SENTRY",
-        "es": "Corrección: Disable SENTRY",
-        "pl": "Fix: Disable SENTRY (ang.)",
-        "uk": "Виправлення: Вимкнена СЕНТРІЯ",
-        "zh-cn": "Ix:倾覆南联盟"
       }
     },
     "titleLang": {
