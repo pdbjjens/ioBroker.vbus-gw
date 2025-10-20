@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vbus-gw",
-    "version": "0.3.1-alpha.0",
+    "version": "0.3.2-alpha.0",
     "news": {
+      "0.3.2-alpha.0": {
+        "en": "Fix: Removed NPM_TOKEN secret from repository",
+        "de": "Fix: Entfernen von NPM_TOKEN Geheimnis aus dem Repository",
+        "ru": "Исправление: удален секрет NPM_TOKEN из хранилища",
+        "pt": "Corrigir: Removido NPM_TOKEN secret do repositório",
+        "nl": "Fix: NPM_TOKEN geheim uit repository verwijderd",
+        "fr": "Correction : Supprimé le secret NPM_TOKEN du dépôt",
+        "it": "Fix: Rimosso segreto NPM_TOKEN dal repository",
+        "es": "Corrección: Eliminado secreto NPM_TOKEN del repositorio",
+        "pl": "Fix: Usunięto tajemnicę NPM _ TOKEN z repozytorium",
+        "uk": "Виправлення: Видалено NPM_TOKEN секрет з репозиторій",
+        "zh-cn": "修正: 从存储处删除 NPU_TOKEN 秘密"
+      },
       "0.3.1-alpha.0": {
         "en": "Fix: Add GitHub as npm Trusted Publisher\nChange: Update dependencies",
         "de": "Fix: GitHub als npm Trusted Publisher hinzufügen\nÄnderung: Abhängigkeiten aktualisieren",
@@ -80,19 +93,6 @@
         "pl": "Nowy: Użyj desol- vbus v0.29.0\nNowy: Logowanie odmówionych zdarzeń połączeń",
         "uk": "Новий: Використовуйте resol-vbus v0.29.0\nНовий: Відхилення відхилених подій з'єднання",
         "zh-cn": "新建: 使用resol- vbus v0. 290\n新建: 无法登录连接事件"
-      },
-      "0.0.5": {
-        "en": "New: Use resol-vbus v0.28.0\nNew: Configurable password for the VBus gateway\nFix: Channel forwarding to the requesting connections only",
-        "de": "Neu: Nutzung von resol-vbus v0.28.0\nNeu: Konfigurierbares Passwort für das VBus Gateway\nFix: Kanalweiterleitung nur an die anfragenden Verbindungen",
-        "ru": "Новый: Используйте resol-vbus v0.28.0\nНовый: Настраиваемый пароль для шлюза VBus\nFix: Пересылка канала к запрашивающим соединениям",
-        "pt": "Novo: Use resol-vbus v0.28.0\nNovo: Senha configurável para o gateway VBus\nFix: Encaminhamento de canal apenas para as conexões de solicitação",
-        "nl": "Nieuw: Gebruik resol-vbus v0.28.0\nNieuw: Configureerbaar wachtwoord voor de VBus gateway\nFix: Kanaal alleen doorsturen naar de gevraagde verbindingen",
-        "fr": "Nouveau : utiliser resol-vbus v0.28.0\nNouveau : Mot de passe configurable pour la passerelle VBus\nCorrection: Transmission de la voie vers les connexions demandées uniquement",
-        "it": "Nuovo: Utilizzare risol-vbus v0.28.0\nNuovo: password configurabile per il gateway VBus\nFisso: Canale di inoltro ai collegamenti di richiesta",
-        "es": "Nuevo: Use resol-vbus v0.28.0\nNuevo: contraseña configurable para el portal VBus\nCorrección: El canal de reenvío a las conexiones solicitantes solamente",
-        "pl": "Nowy: Używać desol- vbus v0.28.0\nNowy: Konfigurowalne hasło dla bramy VBus\nFix: Przesyłanie kanału tylko do żądanych połączeń",
-        "uk": "Новий: Використовуйте resol-vbus v0.28.0\nНовий: Налаштування пароля для шлюзу VBus\nВиправлення: Переадресація каналу до запиту тільки",
-        "zh-cn": "新建: 使用resol- vbus v0.2.8\n新建: VBus 网关的可配置密码\n固定: 频道只转发到请求的连接"
       }
     },
     "titleLang": {

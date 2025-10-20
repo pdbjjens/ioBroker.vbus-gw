@@ -1,4 +1,9 @@
 # Older changes
+## 0.0.7 (2024-02-24)
+
+- (pdbjjens) Fix: VBus write fixed
+- (pdbjjens) Fix: Password logging removed
+
 ## 0.0.6 (2024-01-23)
 
 - (pdbjjens) New: Use resol-vbus v0.29.0
