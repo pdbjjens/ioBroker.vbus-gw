@@ -8,7 +8,7 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.vbus-gw.svg)](https://www.npmjs.com/package/iobroker.vbus-gw)
 **Tests:** ![Test and Release](https://github.com/pdbjjens/ioBroker.vbus-gw/workflows/Test%20and%20Release/badge.svg)
 
-[![NPM](https://nodei.co/npm/iobroker.vbus-gw.png?downloads=true)](https://nodei.co/npm/iobroker.vbus-gw/)
+[![NPM](https://nodei.co/npm/iobroker.vbus-gw.svg?data=d,s)](https://www.npmjs.com/package/iobroker.vbus-gw)
 
 ## vbus-gw adapter for ioBroker
 
