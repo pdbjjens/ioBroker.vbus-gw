@@ -1,4 +1,9 @@
 # Older changes
+## 0.0.6 (2024-01-23)
+
+- (pdbjjens) New: Use resol-vbus v0.29.0
+- (pdbjjens) New: Logging of denied connection events
+
 ## 0.0.5 (2024-01-21)
 
 - (pdbjjens) New: Use resol-vbus v0.28.0

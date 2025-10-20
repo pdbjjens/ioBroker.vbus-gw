@@ -63,7 +63,7 @@ If you only want to connect to a single serial port it is recommended to configu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.3.1-alpha.0 (2025-10-20)
 
 - (pdbjjens) Fix: Add GitHub as npm Trusted Publisher
 - (pdbjjens) Change: Update dependencies
@@ -89,11 +89,6 @@ If you only want to connect to a single serial port it is recommended to configu
 
 - (pdbjjens) Fix: VBus write fixed
 - (pdbjjens) Fix: Password logging removed
-
-### 0.0.6 (2024-01-23)
-
-- (pdbjjens) New: Use resol-vbus v0.29.0
-- (pdbjjens) New: Logging of denied connection events
 
 ## License
 
