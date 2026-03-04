@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vbus-gw",
-    "version": "0.3.2-alpha.0",
+    "version": "0.3.2",
     "news": {
+      "0.3.2": {
+        "en": "**Changed**: node>=20, js-controller>=7.0.7 and admin>=7.7.22 required\n**Fixed**: update release-script (#149)",
+        "de": "**Changed*: node>=20, js-controller>=7.0.7 und admin>=7.7.22 erforderlich\n**Fixed**: Update-Release-script (#149)",
+        "ru": "**Измененный**: узел>=20, js-контроллер>=7.0.7 и админ>=7.7.22\n**Fixed**: Update Release-Script (#149)",
+        "pt": "**Changed**: nodo>=20, js-controller>=7.07 e admin>=7.7.22 requerido\n**Fixed**: update release-script (#149)",
+        "nl": "**Veranderd**: node>=20, js-controller>=7,07 en admin>=7,7.22 vereist\n**Fixed**: update release-script (#149)",
+        "fr": "**Changed**: noeud>=20, js-controller>=7.0.7 et admin>=7.7.22 requis\n**Fixed**: mise à jour de la version-script (#149)",
+        "it": "**Changed**: node>=20, js-controller>=7.0.7 e admin>=7.22 richiesto\n**Fixed**: update release-script (#149)",
+        "es": "**Changed**: node confianza=20, js-controller confianza=7.0.7 y admin=7.7.22 requerido\n**Fixed**: actualización de la versión-script (#149)",
+        "pl": "* *Zmiana* *: węzeł > = 20, kontroler js- > = 7.0.7 i admin > = 7.7.22 wymagane \n* *Fixed* *: update release- script (# 149) ",
+        "uk": "**Змінено**: вузол>=20, js-controller>=7.0.7 і admin>=7.7.22 потрібно\n**Fixed***: реєстрація релізу (#149)",
+        "zh-cn": "** 变化**:节点20、js控制器7.0.7和管理员7.7.22\n** Fixed**:更新发布标记(# 149)"
+      },
       "0.3.2-alpha.0": {
         "en": "Fix: Removed NPM_TOKEN secret from repository",
         "de": "Fix: Entfernen von NPM_TOKEN Geheimnis aus dem Repository",
@@ -80,19 +93,6 @@
         "pl": "Fix: VBus pisać stałe\nFix: Hasło logowanie usunięte",
         "uk": "Виправлення: VBus запис фіксований\nВиправлення: Видалення пароля",
         "zh-cn": "修正: VBus 写入固定\n修正: 密码记录已删除"
-      },
-      "0.0.6": {
-        "en": "New: Use resol-vbus v0.29.0\nNew: Logging of denied connection events",
-        "de": "Neu: Verwendung von resol-vbus v0.29.0\nNeu: Protokollierung von verwehrten Verbindungsereignissen",
-        "ru": "Новый: Используйте resol-vbus v0.29.0\nНовый: Логирование отрицаемых событий связи",
-        "pt": "Novo: Use resol-vbus v0.29.0\nNovo: Registo de eventos de conexão negados",
-        "nl": "Nieuw: Gebruik resol-vbus v0.29.0\nNieuw: Loggen van geweigerde verbindingsgebeurtenissen",
-        "fr": "Nouveau : utiliser resol-vbus v0.29.0\nNouveau: Enregistrement d'événements de connexion refusés",
-        "it": "Nuovo: Utilizzare risol-vbus v0.29.0\nNuovo: Logging di eventi di connessione negati",
-        "es": "Nuevo: Use resol-vbus v0.29.0\nNew: Logging of denied connection events",
-        "pl": "Nowy: Użyj desol- vbus v0.29.0\nNowy: Logowanie odmówionych zdarzeń połączeń",
-        "uk": "Новий: Використовуйте resol-vbus v0.29.0\nНовий: Відхилення відхилених подій з'єднання",
-        "zh-cn": "新建: 使用resol- vbus v0. 290\n新建: 无法登录连接事件"
       }
     },
     "titleLang": {

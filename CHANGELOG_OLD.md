@@ -1,4 +1,10 @@
 # Older changes
+## 0.1.0 (2024-08-13) - 2024H2 maintenance release
+
+- (pdbjjens) Change: node>=18, js-contoller>=5 and admin>=6 required
+- (pdbjjens) New: Updated dependencies
+- (pdbjjens) New: Ensure that vbus-gw is started before myvbus or resol
+
 ## 0.0.7 (2024-02-24)
 
 - (pdbjjens) Fix: VBus write fixed
