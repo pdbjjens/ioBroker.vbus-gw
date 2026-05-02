@@ -63,6 +63,9 @@ If you only want to connect to a single serial port it is recommended to configu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
 ### 0.3.2 (2026-03-04) - 2026H1 maintenance release
 
 - (pdbjjens) **Changed**: node>=20, js-controller>=7.0.7 and admin>=7.7.22 required
