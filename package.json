@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.3.2",
-    "@iobroker/types": "^7.1.1",
+    "@iobroker/types": "^7.1.2",
     "resol-vbus": "^0.29.0",
     "serialport": "^13.0.0"
   },
