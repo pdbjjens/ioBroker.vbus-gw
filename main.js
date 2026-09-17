@@ -27,7 +27,7 @@ let logging = null;
 
 class VbusGw extends utils.Adapter {
     /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
+     * @param {Partial<utils.AdapterOptions>} [options] Adapter options
      */
     constructor(options) {
         super({
@@ -293,7 +293,7 @@ class VbusGw extends utils.Adapter {
     /**
      * Is called when adapter shuts down - callback has to be called under any circumstances!
      *
-     * @param {() => void} callback
+     * @param {() => void} callback Called when the adapter shutdown is complete and must be invoked.
      */
     onUnload(callback) {
         try {
@@ -313,7 +313,7 @@ class VbusGw extends utils.Adapter {
 if (require.main !== module) {
     // Export the constructor in compact mode
     /**
-     * @param {Partial<utils.AdapterOptions>} [options={}]
+     * @param {Partial<utils.AdapterOptions>} [options] Adapter options.
      */
     module.exports = options => new VbusGw(options);
 } else {
