@@ -1,9 +1,9 @@
 {
+    "Table of Serial Ports": "Tabla de puertos serie para monitorear",
     "The TCP port on which the service is listening for incoming connections": "Puerto TCP en el que el servicio está escuchando las conexiones entrantes",
+    "The baudrate of the serial port": "Baudrate del puerto serie",
+    "The channel number if more than one serial port is connected": "Número de canal si se conectan más de un puerto serie",
     "The http port on which the service is listening for discovery requests": "puerto HTTP en el que el servicio está escuchando las solicitudes de descubrimiento",
     "The password of the vbus gateway": "Contraseña de la puerta de enlace VBUS, predeterminado: VBUS",
-    "Table of Serial Ports": "Tabla de puertos serie para monitorear",
-    "The path to the serial port to connect to": "Camino hacia el puerto serie, p. Com5 o /dev /ttyusb0",
-    "The channel number if more than one serial port is connected": "Número de canal si se conectan más de un puerto serie",
-    "The baudrate of the serial port": "Baudrate del puerto serie"
+    "The path to the serial port to connect to": "Camino hacia el puerto serie, p. Com5 o /dev /ttyusb0"
 }

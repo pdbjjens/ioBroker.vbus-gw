@@ -1,0 +1,9 @@
+{
+    "Table of Serial Ports": "Tabel met seriële poorten om te controleren",
+    "The TCP port on which the service is listening for incoming connections": "TCP -poort waarop de service luistert naar inkomende verbindingen",
+    "The baudrate of the serial port": "Baudrate van de seriële haven",
+    "The channel number if more than one serial port is connected": "Kanaalnummer als er meer dan één seriële poort is aangesloten",
+    "The http port on which the service is listening for discovery requests": "HTTP -poort waarop de service luistert naar ontdekkingsverzoeken",
+    "The password of the vbus gateway": "Wachtwoord van de VBUS -gateway, standaard: VBUS",
+    "The path to the serial port to connect to": "Pad naar de seriële poort, b.v. Com5 of /dev /ttyusb0"
+}

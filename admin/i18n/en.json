@@ -1,0 +1,9 @@
+{
+    "Table of Serial Ports": "Table of Serial Ports to monitor",
+    "The TCP port on which the service is listening for incoming connections": "TCP port on which the service is listening for incoming connections",
+    "The baudrate of the serial port": "Baudrate of the serial port",
+    "The channel number if more than one serial port is connected": "Channel number if more than one serial port is connected",
+    "The http port on which the service is listening for discovery requests": "http port on which the service is listening for discovery requests",
+    "The password of the vbus gateway": "Password of the vbus gateway, default: vbus",
+    "The path to the serial port to connect to": "Path to the serial port e.g. COM5 or /dev/ttyUSB0"
+}
