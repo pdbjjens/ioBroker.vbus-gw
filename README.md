@@ -100,7 +100,7 @@ If you only want to connect to a single serial port it is recommended to configu
 
 MIT License  
 Copyright (c) 2025-2026 Jens-Peter Jensen <jjensen@t-online.de>  
-Copyright (c) 2013-present, Daniel Wippermann.
+Copyright (c) 2013-present, Daniel Wippermann <daniel.wippermann@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
