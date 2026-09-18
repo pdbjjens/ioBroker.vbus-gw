@@ -1,4 +1,11 @@
 # Older changes
+## 0.2.0 (2025-01-29) - 2025H1 maintenance release
+
+- (pdbjjens) Change: Migration to ESLint 9
+- (pdbjjens) New: Accept serial port paths /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxx or /dev/serial/by-path/platform-xxxxxxxxxxxxxxxxxxx
+- (pdbjjens) Change: Responsive Design optimizations
+
+
 ## 0.1.0 (2024-08-13) - 2024H2 maintenance release
 
 - (pdbjjens) Change: node>=18, js-contoller>=5 and admin>=6 required

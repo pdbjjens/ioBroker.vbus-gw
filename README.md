@@ -63,7 +63,7 @@ If you only want to connect to a single serial port it is recommended to configu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS** - 2026H2 maintenance release
+### 0.4.0 (2026-09-18) - 2026H2 maintenance release
 
 - (copilot) Adapter requires node.js >= 22 now
 - (pdbjjens) **Fixed**: i18n directory migrated to short format
@@ -87,12 +87,6 @@ If you only want to connect to a single serial port it is recommended to configu
 
 - (pdbjjens) Change: node>=20, js-controller>=7.0.7 and admin>=7.6.17 required
 - (pdbjjens) Change: Cleanup devDependencies
-
-### 0.2.0 (2025-01-29) - 2025H1 maintenance release
-
-- (pdbjjens) Change: Migration to ESLint 9
-- (pdbjjens) New: Accept serial port paths /dev/serial/by-id/usb-xxxxxxxxxxxxxxxxxxx or /dev/serial/by-path/platform-xxxxxxxxxxxxxxxxxxx
-- (pdbjjens) Change: Responsive Design optimizations
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
